@@ -14,3 +14,11 @@ Find S(10^3) mod 998244353.
 Notes:
     * 998244353 is prime.
 '''
+
+def s(n):
+    ssum = sum(6*n - 5*(k - 1) for k in range(1, n+1))
+    return (3**(2*n) - (2*n - 1)) * ssum
+
+print(s(1))
+print(s(2))
+print(s(10) % 998244353)
