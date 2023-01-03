@@ -29,6 +29,13 @@ import numpy as np
 
 from tqdm import tqdm
 
+
+# Constants
+N = 10**4
+M = 10**6
+P = 1234567891
+
+
 def smallest_prime_factor(n):
     for i in range(2, int(n**.5) + 1):
         if n%i == 0:
