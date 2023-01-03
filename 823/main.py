@@ -19,6 +19,10 @@ Observations:
       10^16 steps.
     * We already have to complete prime factorization of all the numbers we
       add to the end of the list.
+    * Cycles are less common than I thought. Perhaps they can be found in a
+      different way?
+    * Sum of integers is not unique, e.g., in S(6, 10^16) we have
+      [[2, 3, 5], [2, 3], [2, 2]] = 40 and [[2], [2, 3, 3], [2, 2, 5]] = 40.
 '''
 
 import numpy as np
