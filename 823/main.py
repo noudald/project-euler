@@ -27,6 +27,8 @@ Observations:
 
 import numpy as np
 
+from functools import reduce
+
 from tqdm import tqdm
 
 
@@ -86,18 +88,37 @@ def step(nlist):
 
     return newlist
 
+def prod(e):
+    if isinstance(e, list):
+        return reduce(lambda x, y: x*y, e)
+    else:
+        return e
+
 def S(n, m):
     a = list(range(2, n+1))
+    ap = sum([prod(elm) for elm in a]) % P
     hist = [a]
+    hist2 = [ap]
     for i in range(m):
         a = step(a)
+        ap = sum([prod(elm) % P for elm in a]) % P
+        # print('{:<4} {:<6} {}'.format(i, sum([np.prod(elm) for elm in a]), a))
+        print('{:<4} {:<6}'.format(i, ap))
         if a in hist:
             print('Found cycle!', i)
             break
+        if ap in hist2:
+            print('Found double value!', i)
+            break
         hist.append(a)
+        hist2.append(ap)
+        if i == 1000:
+            break
     return sum([np.prod(elm) for elm in a])
 
 print(S(5, 3), 21)
 
-for i in range(10, 1000):
-    S(i, 10**16)
+S(10**4, 10**16)
+
+# for i in range(10, 1000):
+#     S(i, 10**16)
