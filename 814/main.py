@@ -13,7 +13,9 @@ Find S(10^3) mod 998244353.
 '''
 Notes:
     * 998244353 is prime.
-    * Naive, S(2) = 243
+    * Naive, S(1) = 48 = 2^4 * 3,
+             S(2) = 2256 = 2^4 * 3 * 47,
+             S(3) = 125784 = 2^3 * 3^2 * 1747
 '''
 
 def gen_all_edges(n, nodes):
